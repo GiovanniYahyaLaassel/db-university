@@ -39,3 +39,21 @@ GROUP BY
 ORDER BY 
 	`exam_date` ASC;
 ```
+
+###  Contare quanti corsi di laurea ci sono per ogni dipartimento
+
+```SQL
+SELECT 
+	d.name AS `department_name`,
+    COUNT(deg.id) AS `degree_count`
+FROM 
+	db_university.departments AS d
+LEFT JOIN
+	db_university.degrees AS deg
+ON
+	d.id = deg.department_id
+GROUP BY 
+	d.id, d.name
+ORDER BY 
+  `degree_count` DESC;
+```
